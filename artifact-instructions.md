@@ -151,7 +151,7 @@ The subtlety of weak consistency can be completely ignored by annotating every m
 
 ### Violat’s output
 
-Violat outputs any discovered violations to the console directly — see the examples below. Additionally, Violat generates plenty of intermediate files in the `violat-output` directory. Additionally, the various components of Violat can generate plenty of debug output by adding the appropriate tags to the DEBUG variable. For example the following generates debug output for all components.
+Violat outputs any discovered violations to the console directly — see the examples below. Additionally, Violat generates plenty of intermediate files in the `violat-output` subdirectory of the current working directory. Additionally, the various components of Violat can generate plenty of debug output by adding the appropriate tags to the DEBUG variable. For example the following generates debug output for all components.
 
 ````
 DEBUG=* violat-validator MySpec.json
@@ -171,9 +171,10 @@ const debug = Debug('enum:random');
 
 ## A Few Simple Examples
 
-Let’s first copy the concurrent hash map spec, but change all visibilities to `complete`:
+Let’s first copy the concurrent hash map spec, but change all visibilities to `complete`. I’ll assume we’re working out of `/home/cav/Code/violat`, but Violat can be invoked from any directory.
 
 ````bash
+cd /home/cav/Code/violat
 cp resources/specs/java/util/concurrent/ConcurrentHashMap.json MySpec.json
 sed -i'' 's/monotonic/complete/g' MySpec.json
 sed -i'' 's/weak/complete/g' MySpec.json
