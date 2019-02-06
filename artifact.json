@@ -1,0 +1,39 @@
+{
+  "variables": {
+    "source_path": null,
+    "output_directory": null,
+    "ssh_username": null,
+    "ssh_password": null,
+    "vm_name": null,
+    "vm_description": "TODO: provide a description",
+    "vm_version": "1.0"
+  },
+  "builders": [{
+    "type": "virtualbox-ovf",
+    "export_opts": [
+      "--manifest",
+      "--vsys", "0",
+      "--description", "{{user `vm_description`}}",
+      "--version", "{{user `vm_version`}}"
+    ],
+    "format": "ova",
+    "headless": true,
+    "source_path": "{{user `source_path`}}",
+    "output_directory": "{{user `output_directory`}}",
+    "vm_name": "{{user `vm_name`}}",
+    "ssh_username": "{{user `ssh_username`}}",
+    "ssh_password": "{{user `ssh_password`}}",
+    "ssh_pty" : "true",
+    "shutdown_command": "echo '{{user `ssh_password`}}' | sudo -S shutdown -P now",
+    "vboxmanage": [
+    ]
+  }],
+  "provisioners": [
+    { "type": "shell",
+      "script": "provision.sh",
+      "pause_before": "10s",
+      "execute_command": "echo '{{user `ssh_password`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'" },
+    { "type": "file", "source": "artifact-instructions.md", "destination": "/home/cav/README.md" },
+    { "type": "file", "source": "violat-tool-paper.pdf", "destination": "/home/cav/" }
+  ]
+}
