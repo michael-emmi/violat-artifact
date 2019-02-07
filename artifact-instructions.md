@@ -11,6 +11,14 @@ This file is to be used in the artifact evaluation of the Violat tool.
 
 Violat is built mainly with Node.js and Java 8, and otherwise depends on Maven and Gradle. See Violat’s `README.md` for more information.
 
+## Extreme Quick Start
+
+Replicate the functionality demonstrated in the tool paper.
+
+````bash
+bash run-examples.sh
+````
+
 ## Basic Usage
 
 Violat is invoked via the `violat-validator` command. When no arguments are provided, Violat prints a standard usage message:
