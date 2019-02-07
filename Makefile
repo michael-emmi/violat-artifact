@@ -4,7 +4,7 @@ version = 1.0
 description = a VM for the CAV artifact evaluation of Violat
 username = cav
 password = ae
-source = /Users/mje/Desktop/cav19.ova
+source = /Users/mje/Downloads/cav19-with-ssh.ova
 build = $(CURDIR)/build
 target = $(build)/$(name).ova
 
