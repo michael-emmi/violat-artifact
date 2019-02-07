@@ -6,6 +6,7 @@ This file is to be used in the artifact evaluation of the Violat tool.
 
 * These instructions: `/home/cav/README.md`.
 * The Violat tool paper submission: `/home/cav/violat-tool-paper.pdf`
+* A script to run examples from the tool paper: `/home/cav/run-examples.sh`
 * Violat’s source code: `/home/cav/Code/violat`.
 
 Violat is built mainly with Node.js and Java 8, and otherwise depends on Maven and Gradle. See Violat’s `README.md` for more information.
@@ -175,9 +176,23 @@ Let’s first copy the concurrent hash map spec, but change all visibilities to 
 
 ````bash
 cd /home/cav/Code/violat
+
+echo "Copy the ConcurrentHashMap spec"
 cp resources/specs/java/util/concurrent/ConcurrentHashMap.json MySpec.json
+
+echo
+echo "Change monotonic to complete visibility"
 sed -i'' 's/monotonic/complete/g' MySpec.json
+
+echo
+echo "Change weak to complete visibility"
 sed -i'' 's/weak/complete/g' MySpec.json
+
+echo
+echo "Add visibilities to clear, size, mappingCount"
+sed -i'' 's/\("name": "clear"\)/\1, "visibility": "complete"/g' MySpec.json
+sed -i'' 's/\("name": "size"\)/\1, "visibility": "complete"/g' MySpec.json
+sed -i'' 's/\("name": "mappingCount"\)/\1, "visibility": "complete"/g' MySpec.json
 ````
 
 As an initial sanity check, let’s run Violat on a specific program schema, using Java Pathfinder to cover all paths:

@@ -35,6 +35,7 @@
       "pause_before": "10s",
       "execute_command": "echo '{{user `ssh_password`}}' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'" },
     { "type": "file", "source": "artifact-instructions.md", "destination": "/home/cav/README.md" },
-    { "type": "file", "source": "violat-tool-paper.pdf", "destination": "/home/cav/" }
+    { "type": "file", "source": "violat-tool-paper.pdf", "destination": "/home/cav/" },
+    { "type": "file", "source": "run-examples.sh", "destination": "/home/cav/" }
   ]
 }
