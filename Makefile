@@ -1,7 +1,7 @@
 
 name = cav19-violat
 version = 1.0
-description = VM for CAV artifact evaluation
+description = a VM for the CAV artifact evaluation of Violat
 username = cav
 password = ae
 source = /Users/mje/Desktop/cav19.ova

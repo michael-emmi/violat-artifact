@@ -1,6 +1,6 @@
 # Packer-Based Build for Artifact Evaluation
 
-## Building the Virtual Machine
+This artifact build process requires [VirtualBox] and [Packer]. Running `make` generates a VirtualBox image at `build/cav19-violat.ova`.
 
 ````bash
 make
@@ -15,3 +15,6 @@ VBoxManage modifyvm cav19-violat --natpf1 "guestssh,tcp,,2222,,22"
 VBoxManage startvm cav19-violat --type headless
 ssh -l cav -p 2222 localhost
 ````
+
+[VirtualBox]: https://www.virtualbox.org
+[Packer]: https://www.packer.io

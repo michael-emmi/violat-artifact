@@ -186,7 +186,6 @@ As an initial sanity check, let’s run Violat on a specific program schema, usi
 $ violat-validator MySpec.json --schema "{ remove(0); elements(); isEmpty() } || { put(1,1) }" --tester "Java Pathfinder"
 violat version 0.5.20
 ---
-(node:1796) ExperimentalWarning: Readable[Symbol.asyncIterator] is an experimental feature. This feature could change at any time
 violation discovered
 ---
 { remove(0); elements(); isEmpty() } || { put(1,1) }
@@ -202,7 +201,7 @@ null, [1], false, null  √   3
 Found 1 violations.
 ````
 
-Let’s ignore the warning, and notice the consistency violation discovered.
+Notice the consistency violation discovered.
 
 Now let’s unleash Violat to discover any atomicity violations in the first 100 programs it generates and tests, via stress testing. Note that the frequencies generated below are during 1 second of stress testing per program on a native installation; these frequencies may differ significantly when run on a VM, due to performance overhead, as well as resource availability.
 
@@ -305,7 +304,6 @@ Interesting, let’s see whether Java Pathfinder finds the same violations. Note
 $ violat-validator MySpec.json --tester "Java Pathfinder"
 violat version 0.5.20
 ---
-(node:87171) ExperimentalWarning: Readable[Symbol.asyncIterator] is an experimental feature. This feature could change at any time
 violation discovered
 ---
 { remove(1); toString() } || { put(1,1); remove(1); elements(); isEmpty() }
